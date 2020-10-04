@@ -1,7 +1,9 @@
-import enigma
+from enigma import enigma
 import base64
 
-def ReadBytes(filename, nBytes):
+eni = enigma()
+
+def ReadBytes(filename):
     with open(filename,'rb') as file:
         while True:
             byte = file.read(1)
@@ -10,11 +12,9 @@ def ReadBytes(filename, nBytes):
             else:
                 break
 
-            if nBytes > 0:
-                nBytes -= 1 
-                if nBytes == 0:
-                    break
-
-for b in ReadBytes('myimage.jpg',5):
-    i = int.from_bytes(b,byteorder='big')
-    print(f"raw({b}) - int({i}) - binary({bin(i)})")
+for b in ReadBytes('asset/myimage.jpg'):
+    # i = int.from_bytes(b,byteorder='big')
+    bhex = b.hex()
+    print(bhex,end=" ")
+    #print(eni.run(bhex))
+    # print(f"raw({b}) - int({i}) - binary({bin(i)})")
