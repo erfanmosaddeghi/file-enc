@@ -12,9 +12,14 @@ def ReadBytes(filename):
             else:
                 break
 
+plain = ''
 for b in ReadBytes('asset/myimage.jpg'):
     # i = int.from_bytes(b,byteorder='big')
     bhex = b.hex()
-    print(bhex,end=" ")
+    for i in bhex:
+        for index in range(1):
+            #print(bhex[index],end="")
+            plain += bhex[index]
     #print(eni.run(bhex))
     # print(f"raw({b}) - int({i}) - binary({bin(i)})")
+eni.run(plain)
